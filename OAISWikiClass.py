@@ -67,7 +67,7 @@ class HandleOAISWiki:
       elif self.__tweetlen__(tweet, url) > 140:
          sys.exit("Cannot create a tweet of an appropriate length: " + str(self.__tweetlen__(tweet, url)))
 
-      sys.stderr.write("Tweet len: " + str(self.__tweetlen__(tweet, url)) + "\n")
+      sys.stderr.write(str(self.__tweetlen__(tweet, url)) + " " + tweet.strip() + "\n")
       return tweet.strip()
 
    def __checkindex__(self, link):
