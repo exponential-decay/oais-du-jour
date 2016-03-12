@@ -136,8 +136,10 @@ class HandleOAISWiki:
          if newdate == True and oaispage == True:
             self.tweetlist.append(self.__maketweet__(data))  
 
-      return self.tweetlist       
+      return self.tweetlist
 
    def __del__(self):
-      print time.strftime(self.DATEFORMAT)
+      with open(self.lastdateloc, 'wb') as f:
+         f.write(time.strftime(self.DATEFORMAT).strip())
+         f.close()
                
