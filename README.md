@@ -14,3 +14,5 @@ We can improve the situation by lobbying for an OAIS namespace to be created
 on the wiki, and then potentially namespaces for other initiatives, e.g PREMIS.
 
 More information here: https://www.mediawiki.org/wiki/Manual:Namespace 
+
+**NB** Discussion URIs are monitored by appending Talk: to each page title
