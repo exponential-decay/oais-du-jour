@@ -128,8 +128,9 @@ class HandleOAISWiki:
                   oaispage = self.__checkindex__(item)
                else:
                   oaispage = True
-            if newdate == True and oaispage == True:
-               self.tweetlist.append(self.__maketweet__(data))  
+
+         if newdate == True and oaispage == True:
+            self.tweetlist.append(self.__maketweet__(data))  
 
       #TODO: Create better exit conditions
       return self.tweetlist       
