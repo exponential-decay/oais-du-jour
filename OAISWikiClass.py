@@ -65,7 +65,8 @@ class HandleOAISWiki:
       elif self.__tweetlen__(tweet, url) > 140:
          tweet = tweet.replace(self.HASHOAIS, '')
       elif self.__tweetlen__(tweet, url) > 140:
-         sys.stderr.write("Cannot create a tweet of an appropriate length: " + str(self.__tweetlen__(tweet, url)))
+         sys.stderr.write("Cannot create a tweet of an appropriate length: " + str(self.__tweetlen__(tweet, url)) + "\n")
+         tweet = ''
 
       return tweet.strip()
 
