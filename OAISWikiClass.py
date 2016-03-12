@@ -109,11 +109,11 @@ class HandleOAISWiki:
       if namespace is False:
          self.pageindex = self.__buildpageindex__()
 
-      #finally process the ATOM feed...
-      self.__readxml__(atom)
+      self.atom = atom
 
-   def __readxml__(self, atom):
-      for entry in atom:
+   def __readxml__(self):
+      for entry in self.atom:
+         datedone = False
          newdate = False
          oaispage = False
 
@@ -121,12 +121,16 @@ class HandleOAISWiki:
 
          for item in entry:
             if item.tag == self.UPDATEDTAG:
+               datedone = True
                newdate = self.__newdate__(item.text)
             if item.tag == self.LINKTAG:
                if self.namespace == False:
                   oaispage = self.__checkindex__(item)
                else:
                   oaispage = True
+
+         if datedone == True and newdate == False:
+            break
 
          if newdate == True and oaispage == True:
             self.tweetlist.append(self.__maketweet__(data))  
