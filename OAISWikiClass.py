@@ -135,7 +135,6 @@ class HandleOAISWiki:
          if newdate == True and oaispage == True:
             self.tweetlist.append(self.__maketweet__(data))  
 
-      #TODO: Create better exit conditions
       return self.tweetlist       
 
    def __del__(self):
