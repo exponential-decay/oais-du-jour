@@ -5,7 +5,7 @@ Tweets, as ever, sent via CRON task through my Pythonanywhere.com account.
 
 ##Limitations
 
-The URLs recorded here: https://github.com/exponential-decay/oais-du-jour/blob/master/wiki-uris-manual.txt
+The URLs recorded here: https://github.com/exponential-decay/oais-du-jour/blob/master/wiki-uris-manual
 
 Have been created by hand by walking through the website. We need these URLs to
 distinguish between general DPC content on the wiki vs. OAIS commentary. 
