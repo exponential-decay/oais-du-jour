@@ -61,7 +61,7 @@ class HandleOAISWiki:
 
       #TODO: Better length logic? 
       #CURRENT RATIONALE: Hash tags help discoverability, compromise last
-      tweet = discuss + ": " + title + ' by ' + author + " " + url + " 1111111111111111111111111111111111111111111111111" + self.HASHOAIS + " " + self.HASHDP
+      tweet = discuss + ": " + title + ' by ' + author + " " + url + " " + self.HASHOAIS + " " + self.HASHDP
       if self.__tweetlen__(tweet, url) > 140:
          tweet = tweet.replace(self.HASHDP, self.HASHDP2)
       if self.__tweetlen__(tweet, url) > 140:
