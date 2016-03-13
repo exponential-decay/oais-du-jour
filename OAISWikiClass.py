@@ -8,7 +8,7 @@ class HandleOAISWiki:
    #we'll return this to the main handler
    tweetlist = []
 
-   lastdateloc = "oasilastupdated"
+   lastdateloc = "oaislastupdated"
    pageindexloc = "wiki-uris-manual"
    DATEFORMAT = "%Y-%m-%dT%H:%M:%SZ"
 
@@ -25,6 +25,8 @@ class HandleOAISWiki:
    DISCUSSTEXT = '?title=Talk:'
 
    TWITTERLINKLEN = 22
+   TWEETLEN = 140
+   ELIPSESLEN = 3 #{...}
 
    def __tweetlen__(self, tweet, url):
       return ((len(tweet.strip()) - len(url)) + self.TWITTERLINKLEN)
@@ -57,14 +59,19 @@ class HandleOAISWiki:
          if item.tag == self.UPDATEDTAG:
             date = item.text
 
-      tweet = discuss + ": " + title + ' by ' + author + " " + url + " " + self.HASHOAIS + " " + self.HASHDP
+      #TODO: Better length logic? 
+      #CURRENT RATIONALE: Hash tags help discoverability, compromise last
+      tweet = discuss + ": " + title + ' by ' + author + " " + url + " 1111111111111111111111111111111111111111111111111" + self.HASHOAIS + " " + self.HASHDP
       if self.__tweetlen__(tweet, url) > 140:
          tweet = tweet.replace(self.HASHDP, self.HASHDP2)
-      elif self.__tweetlen__(tweet, url) > 140:
+      if self.__tweetlen__(tweet, url) > 140:
          tweet = tweet.replace(self.HASHDP2, '')
-      elif self.__tweetlen__(tweet, url) > 140:
+      if self.__tweetlen__(tweet, url) > 140:
          tweet = tweet.replace(self.HASHOAIS, '')
-      elif self.__tweetlen__(tweet, url) > 140:
+      if self.__tweetlen__(tweet, url) > 140:
+         diff = (self.__tweetlen__(tweet, url) - self.TWEETLEN) + self.ELIPSESLEN
+         tweet = discuss + ": " + title[:-diff] + '... by ' + author + " " + url
+      if self.__tweetlen__(tweet, url) > 140:
          sys.stderr.write("Cannot create a tweet of an appropriate length: " + str(self.__tweetlen__(tweet, url)) + "\n")
          tweet = ''
 
